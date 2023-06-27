@@ -19,5 +19,16 @@ typedef struct print
 	int (*f)(va_list, char *, unsigned int);
 } print_t;
 
+/* printf0 functions */
 
-int (*prints_func(const char *s, int index))(va_list, char *, unsigned int);
+int prints_char(va_list types, char buffer[],
+		int flags, int width, int precision, int size);
+int print_string(va_list types, char buffer[],
+		int flags, int width, int precision, int size);
+int prints_percent(va_list types, char buffer[],
+		int flags, int width, int precision, int size);
+int prints_int(va_list types, char buffer[],
+		int flags, int width, int precision, int size);
+int prints_binary(va_list types, char buffer[],
+		int flags, int width, int precision, int size);
+
