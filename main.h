@@ -21,3 +21,4 @@ typedef struct print
 
 
 int print_chrStrPct(const char *format, ...);
+void d_i_Specifiers(int value);
