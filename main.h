@@ -20,5 +20,4 @@ typedef struct print
 } print_t;
 
 
-int print_chrStrPct(const char *format, ...);
-void d_i_Specifiers(int value);
+int (*prints_func(const char *s, int index))(va_list, char *, unsigned int);
