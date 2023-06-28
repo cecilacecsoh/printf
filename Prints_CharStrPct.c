@@ -1,3 +1,6 @@
+#include "main.h"
+#include <stdio.h>
+
 /**
  * prints_char - Function prints char
  * @types: Lists of arguments
@@ -14,7 +17,7 @@ int prints_char(va_list types, char buffer[],
 {
 	char c = va_arg(types, int);
 
-	return (handle_write_char(c, buffer, flags, width, precision, size));
+	return (handles_write_char(c, buffer, flags, width, precision, size));
 }
 
 
@@ -31,7 +34,7 @@ int prints_char(va_list types, char buffer[],
  *
  * Return: The chars printed as a string
  */
-int print_string(va_list types, char buffer[],
+int prints_string(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int length = 0, i;
