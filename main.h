@@ -42,12 +42,12 @@ struct fmt
 typedef struct fmt fmt_t;
 
 int _printf(const char *format, ...);
-int handle_print(const char *fmt, int *i,
+int handles_print(const char *fmt, int *i,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /* The Functions */
 
-int prints_char(va_list types, char buffer[],
+int print_char(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 int prints_string(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
@@ -101,7 +101,7 @@ int prints_rot13string(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Write width handlers */
-int handle_write_char(char c, char buffer[],
+int handles_write_char(char c, char buffer[],
 	int flags, int width, int precision, int size);
 int writes_number(int is_positive, int ind, char buffer[],
 	int flags, int width, int precision, int size);

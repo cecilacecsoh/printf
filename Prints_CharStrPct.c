@@ -2,7 +2,8 @@
 #include <stdio.h>
 
 /**
- * prints_char - Function prints char
+ * print_char - Function prints char
+ *
  * @types: Lists of arguments
  * @buffer: Array handles prints
  * @flags: Calculates the active flags
