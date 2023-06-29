@@ -13,18 +13,18 @@
  *
  * Return: Number of characters printed
  */
-int prints_char(va_list types, char buffer[],
+int print_char(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char c = va_arg(types, int);
 
-	return (handles_write_char(c, buffer, flags, width, precision, size));
+	return (handle_write_char(c, buffer, flags, width, precision, size));
 }
 
 
 
 /**
- * prints_string - Function prints a string
+ * print_string - Function prints a string
  *
  * @types: Lists of arguments
  * @buffer: Array handles prints
@@ -35,7 +35,7 @@ int prints_char(va_list types, char buffer[],
  *
  * Return: The chars printed as a string
  */
-int prints_string(va_list types, char buffer[],
+int print_string(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int length = 0, i;
@@ -52,7 +52,6 @@ int prints_string(va_list types, char buffer[],
 		if (precision >= 6)
 			str = "      ";
 	}
-
 	while (str[length] != '\0')
 		length++;
 
@@ -76,14 +75,13 @@ int prints_string(va_list types, char buffer[],
 			return (width);
 		}
 	}
-
 	return (write(1, str, length));
 }
 
 
 
 /**
- * prints_percent - function that prints percent sign.
+ * print_percent - function that prints percent sign.
  *
  * @types: Lists of arguments
  * @buffer: Array handles prints
@@ -94,7 +92,7 @@ int prints_string(va_list types, char buffer[],
  *
  * Return: The chars printed into %
  */
-int prints_percent(va_list types, char buffer[],
+int print_percent(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	UNUSED(types);
@@ -103,5 +101,6 @@ int prints_percent(va_list types, char buffer[],
 	UNUSED(width);
 	UNUSED(precision);
 	UNUSED(size);
+
 	return (write(1, "%%", 1));
 }
