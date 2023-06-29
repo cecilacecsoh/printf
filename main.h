@@ -75,14 +75,18 @@ int prints_hexa(va_list types, char map_to[],
 
 
 
-/* Prints non printable chars */
-int prints_non_printable(va_list types, char buffer[],
-	int flags, int width, int precision, int size);
-
-
 /* Prints the memory address */
 int prints_pointer(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
+int prints_reverse(va_list types, char buffer[],
+        int flags, int width, int precision, int size);
+/* Prints a string in rot 13*/
+int prints_rot13string(va_list types, char buffer[],
+        int flags, int width, int precision, int size);
+/* Prints non printable chars */
+int prints_non_printable(va_list types, char buffer[],
+        int flags, int width, int precision, int size);
+
 
 
 /* Handles different specifiers */
@@ -92,13 +96,6 @@ int gets_precision(const char *format, int *i, va_list list);
 int gets_size(const char *format, int *i);
 
 
-/* Prints a string in reverse*/
-int prints_reverse(va_list types, char buffer[],
-	int flags, int width, int precision, int size);
-
-/* Prints a string in rot 13*/
-int prints_rot13string(va_list types, char buffer[],
-	int flags, int width, int precision, int size);
 
 /* Write width handlers */
 int handles_write_char(char c, char buffer[],
@@ -118,7 +115,6 @@ int writes_unsgnd(int is_negative, int ind,
 int is_printable(char);
 int appends_hexa_code(char, char[], int);
 int is_digit(char);
-
 long int converts_size_number(long int num, int size);
 long int converts_size_unsgnd(unsigned long int num, int size);
 
