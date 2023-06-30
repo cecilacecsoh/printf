@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * handles_write_char - prints a string of char
+ * handle_write_char - prints a string of char
  *
  * @c: character type
  * @buffer: Buffer array to  handle prints.
@@ -13,9 +13,10 @@
  *
  * Return: print char
  */
-int handles_write_char(char c, char buffer[],
+int handle_write_char(char c, char buffer[],
 	int flags, int width, int precision, int size)
-{ /* the char is stored at left,paddind at buffer's right */
+{
+	/* char is stored at left,paddind at buffer's right */
 	int i = 0;
 	char padd = ' ';
 
@@ -48,7 +49,7 @@ int handles_write_char(char c, char buffer[],
 
 
 /**
- * writes_number - the function prints string.
+ * write_number - the function prints string.
  *
  * @is_negative: the list of arguments
  * @ind: char types
@@ -60,7 +61,7 @@ int handles_write_char(char c, char buffer[],
  *
  * Return: the number of chars printed.
  */
-int writes_number(int is_negative, int ind, char buffer[],
+int write_number(int is_negative, int ind, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int length = BUFF_SIZE - ind - 1;
@@ -79,7 +80,7 @@ int writes_number(int is_negative, int ind, char buffer[],
 		else if (flags & F_SPACE)
 		extra_ch = ' ';
 
-	return (writes_num(ind, buffer, flags, width, precision,
+	return (write_num(ind, buffer, flags, width, precision,
 		length, padd, extra_ch));
 }
 
@@ -93,7 +94,7 @@ int writes_number(int is_negative, int ind, char buffer[],
 
 
 /**
- * writes_unsgnd - function writes an unsigned number
+ * write_unsgnd - function writes an unsigned number
  *
  * @is_negative: takes if the num is negative
  * @ind: Index at which number starts in the buffer
@@ -105,11 +106,11 @@ int writes_number(int is_negative, int ind, char buffer[],
  *
  * Return: Nos of written chars.
  */
-int writes_unsgnd(int is_negative, int ind,
+int write_unsgnd(int is_negative, int ind,
 	char buffer[],
 	int flags, int width, int precision, int size)
 {
-	/* Number is stored at the bufer's right and starts at position i */
+	/* Nos is stored at the bufer's right and starts at position i */
 	int length = BUFF_SIZE - ind - 1, i = 0;
 	char padd = ' ';
 
@@ -136,11 +137,11 @@ int writes_unsgnd(int is_negative, int ind,
 			buffer[i] = padd;
 
 		buffer[i] = '\0';
-		if (flags & F_MINUS) /* to asign an extra char to left of buffer [buffer>padd]*/
+		if (flags & F_MINUS) /* To asign an extra char to left of buffer [buffer>padd]*/
 		{
 			return (write(1, &buffer[ind], length) + write(1, &buffer[0], i));
 		}
-		else /* To asign an extra char to left of padding [padd>buffer]*/
+		else /*  To asign an extra char to left of padding [padd>buffer]*/
 		{
 			return (write(1, &buffer[0], i) + write(1, &buffer[ind], length));
 		}
@@ -152,7 +153,7 @@ int writes_unsgnd(int is_negative, int ind,
 
 
 /**
- * writes_pointer - Write a memory address
+ * write_pointer - Write a memory address
  *
  * @buffer: An Arrays of chars
  * @ind: Index at  which the number starts in the buffer
@@ -165,7 +166,7 @@ int writes_unsgnd(int is_negative, int ind,
  *
  * Return: Written chars.
  */
-int writes_pointer(char buffer[], int ind, int length,
+int write_pointer(char buffer[], int ind, int length,
 	int width, int flags, char padd, char extra_c, int padd_start)
 {
 	int i;
@@ -183,7 +184,7 @@ int writes_pointer(char buffer[], int ind, int length,
 				buffer[--ind] = extra_c;
 			return (write(1, &buffer[ind], length) + write(1, &buffer[3], i - 3));
 		}
-		else if (!(flags & F_MINUS) && padd == ' ')/* asigns an extra char to left of buffer */
+		else if (!(flags & F_MINUS) && padd == ' ')/* asigns an extra char to left  of buffer */
 		{
 			buffer[--ind] = 'x';
 			buffer[--ind] = '0';

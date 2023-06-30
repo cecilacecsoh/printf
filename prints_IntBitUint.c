@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * prints_int - Function prints integers
+ * print_int - Function prints integers
  *
  * @types: Lists of arguments
  * @buffer: Array handles prints
@@ -13,7 +13,7 @@
  *
  * Return: Integer numbers
  */
-int prints_int(va_list types, char buffer[],
+int print_int(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int i = BUFF_SIZE - 2;
@@ -21,7 +21,7 @@ int prints_int(va_list types, char buffer[],
 	long int n = va_arg(types, long int);
 	unsigned long int num;
 
-	n = converts_size_number(n, size);
+	n = convert_size_number(n, size);
 
 	if (n == 0)
 		buffer[i--] = '0';
@@ -41,14 +41,14 @@ int prints_int(va_list types, char buffer[],
 		num /= 10;
 	}
 	i++;
-	return (writes_number(is_negative, i, buffer, flags, width, precision, size));
+	return (write_number(is_negative, i, buffer, flags, width, precision, size));
 }
 
 
 
 
 /**
- * prints_binary - Function prints an unsigned number
+ * print_binary - Function prints an unsigned number
  *
  * @types: Lists of arguments
  * @buffer: Array handles prints
@@ -59,7 +59,7 @@ int prints_int(va_list types, char buffer[],
  *
  * Return: an unsigned number
  */
-int prints_binary(va_list types, char buffer[],
+int print_binary(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	unsigned int n, m, o, sum;
@@ -98,7 +98,7 @@ int prints_binary(va_list types, char buffer[],
 
 
 /**
- * prints_unsigned - Function prints an unsigned number
+ * print_unsigned - Function prints an unsigned number
  *
  * @types: Lists of arguments
  * @buffer: Array handles prints
@@ -109,13 +109,13 @@ int prints_binary(va_list types, char buffer[],
  *
  * Return: an unsigned number
  */
-int prints_unsigned(va_list types, char buffer[],
+int print_unsigned(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int i = BUFF_SIZE - 2;
 	unsigned long int num = va_arg(types, unsigned long int);
 
-	num = converts_size_unsgnd(num, size);
+	num = convert_size_unsgnd(num, size);
 	if (num == 0)
 		buffer[i--] = '0';
 
@@ -127,6 +127,6 @@ int prints_unsigned(va_list types, char buffer[],
 		num /= 10;
 	}
 	i++;
-	return (writes_unsgnd(0, i, buffer, flags, width, precision, size));
+	return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
 

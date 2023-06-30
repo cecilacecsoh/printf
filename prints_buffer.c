@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "main.h"
 
-void prints_buffer(char buffer[], int *buff_ind);
+void print_buffer(char buffer[], int *buff_ind);
 
 /**
  * _printf - Printf function
@@ -27,38 +27,40 @@ int _printf(const char *format, ...)
 		{
 			buffer[buff_ind++] = format[j];
 			if (buff_ind == BUFF_SIZE)
-				prints_buffer(buffer, &buff_ind);
+				print_buffer(buffer, &buff_ind);
 			/* write(1, &format[j], 1);*/
-			printed_chars++;
+				printed_chars++;
 		}
 		else
 		{
-			prints_buffer(buffer, &buff_ind);
-			flags = gets_flags(format, &j);
-			width = gets_width(format, &j, list);
-			precision = gets_precision(format, &j, list);
-			size = gets_size(format, &j);
+			print_buffer(buffer, &buff_ind);
+			flags = get_flags(format, &j);
+			width = get_width(format, &j, list);
+			precision = get_precision(format, &j, list);
+			size = get_size(format, &j);
 			++j;
-			printed = handles_print(format, &j, list, buffer,
+			printed = handle_print(format, &j, list, buffer,
 				flags, width, precision, size);
 			if (printed == -1)
 				return (-1);
 			printed_chars += printed;
 		}
 	}
-	prints_buffer(buffer, &buff_ind);
+	print_buffer(buffer, &buff_ind);
 	va_end(list);
-	
+
 	return (printed_chars);
 }
 
+
+
 /**
- * prints_buffer - Prints any buffer content taht exists.
+ * print_buffer - Prints any buffer content taht exists.
  *
  * @buffer:the Array of chars
  * @buff_ind: Index to add next char for its length.
  */
-void prints_buffer(char buffer[], int *buff_ind)
+void print_buffer(char buffer[], int *buff_ind)
 {
 	if (*buff_ind > 0)
 		write(1, &buffer[0], *buff_ind);

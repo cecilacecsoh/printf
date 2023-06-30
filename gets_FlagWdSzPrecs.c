@@ -3,14 +3,14 @@
 
 
 /**
- * gets_flags - function that gets the number of flags
+ * get_flags - function that gets the number of flags
  *
  * @format: The string in which to print the arguments
  * @i: input parameter
  *
  * Return: Flags:
  */
-int gets_flags(const char *format, int *i)
+int get_flags(const char *format, int *i)
 {
 	/* - + 0 # ' ' */
 	/* 1 2 4 8  16 */
@@ -38,7 +38,7 @@ int gets_flags(const char *format, int *i)
 
 
 /**
- * gets_precision - gets the precision for printing.
+ * get_precision - gets the precision for printing.
  *
  * @format: Formatted string to print the arguments.
  * @i: List of arguments to be printed.
@@ -46,7 +46,7 @@ int gets_flags(const char *format, int *i)
  *
  * Return: Precision.
  */
-int gets_precision(const char *format, int *i, va_list list)
+int get_precision(const char *format, int *i, va_list list)
 {
 	int curr_i = *i + 1;
 	int precision = -1;
@@ -79,14 +79,14 @@ int gets_precision(const char *format, int *i, va_list list)
 
 
 /**
- * gets_size - gets the size to input the arguments.
+ * get_size - gets the size to input the arguments.
  *
  * @format: The string in which to print the arguments.
  * @i: The arguments to be printed.
  *
  * Return: Size.
  */
-int gets_size(const char *format, int *i)
+int get_size(const char *format, int *i)
 {
 	int curr_i = *i + 1;
 	int size = 0;
@@ -110,7 +110,7 @@ int gets_size(const char *format, int *i)
 
 
 /**
- * gets_width - Gets the printing width.
+ * get_width - Gets the printing width.
  *
  * @format: Formatted string to print the arguments.
  * @i: The arguments to be printed.
@@ -118,7 +118,7 @@ int gets_size(const char *format, int *i)
  *
  * Return: Width.
  */
-int gets_width(const char *format, int *i, va_list list)
+int get_width(const char *format, int *i, va_list list)
 {
 	int curr_i;
 	int width = 0;
